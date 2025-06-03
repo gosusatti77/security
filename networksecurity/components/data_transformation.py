@@ -112,7 +112,7 @@ class DataTransformation:
 
             logging.info("Data transformation completed successfully.")
 
-            return DataTransformationArtifact
+            return data_transformation_artifact
 
         except Exception as e:
             logging.error(f"Error during data transformation: {e}")
