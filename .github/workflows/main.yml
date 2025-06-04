@@ -46,18 +46,18 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
-          IMAGE_TAG: latest
+            ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+            ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+            IMAGE_TAG: latest
         run: |
-          # Build a docker container and
-          # push it to ECR so that it can
-          # be deployed to ECS.
-          docker buildx create --use
-          docker buildx inspect --bootstrap
-          docker buildx build --platform linux/amd64,linux/arm64 \
-          --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-          --push .
+            # Enable buildx
+            docker buildx create --use
+            docker buildx inspect --bootstrap
+
+            # Build and push the Docker image to ECR
+            docker buildx build --platform linux/amd64,linux/arm64 \
+            --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            --push .
 #           |         run: |
 # 53|           # Enable buildx
 # 54|           
