@@ -1,0 +1,40 @@
+[2025-06-03 22:49:30,641] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-03 22:49:30,674] 107 dagshub - INFO - Accessing as gosusatti77
+[2025-06-03 22:49:31,152] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/gosusatti77/security "HTTP/1.1 200 OK"
+[2025-06-03 22:49:31,511] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-03 22:49:31,513] 107 dagshub - INFO - Initialized MLflow to track repo "gosusatti77/security"
+[2025-06-03 22:49:31,514] 107 dagshub - INFO - Repository gosusatti77/security initialized!
+[2025-06-03 22:49:31,515] 21 root - INFO - Data Ingestion started with config: <networksecurity.entity.config_entity.DataIngestionConfig object at 0x0000022DE9708B50>
+[2025-06-03 22:49:34,295] 62 root - INFO - Performed train test split on the dataframe
+[2025-06-03 22:49:34,295] 64 root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[2025-06-03 22:49:34,296] 72 root - INFO - Exporting train and test file path.
+[2025-06-03 22:49:34,387] 81 root - INFO - Exported train and test file path.
+[2025-06-03 22:49:34,387] 23 root - INFO - Data Ingestion completed with artifact: DataIngestionArtifact(train_file_path='Artifacts\\06_03_2025_22_49_31\\data_ingestion\\ingested\\train.csv', test_file_path='Artifacts\\06_03_2025_22_49_31\\data_ingestion\\ingested\\test.csv')
+[2025-06-03 22:49:34,411] 28 root - INFO - Data Validation started with config: <networksecurity.entity.config_entity.DataValidationConfig object at 0x0000022DFEA4F790>
+[2025-06-03 22:49:34,487] 30 root - INFO - Required number of columns in the schema: 2
+[2025-06-03 22:49:34,487] 31 root - INFO - Number of columns in the dataframe: 31
+[2025-06-03 22:49:34,487] 30 root - INFO - Required number of columns in the schema: 2
+[2025-06-03 22:49:34,487] 31 root - INFO - Number of columns in the dataframe: 31
+[2025-06-03 22:49:34,657] 30 root - INFO - Data Validation completed with artifact: DataValidationArtifact(validation_status=None, valid_train_file_path='Artifacts\\06_03_2025_22_49_31\\data_ingestion\\ingested\\train.csv', valid_test_file_path='Artifacts\\06_03_2025_22_49_31\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='Artifacts\\06_03_2025_22_49_31\\data_validation\\drift_report\\report.yaml')
+[2025-06-03 22:49:34,658] 35 root - INFO - Data Transformation started with config: <networksecurity.entity.config_entity.DataTransformationConfig object at 0x0000022DFEA4FF10>
+[2025-06-03 22:49:34,658] 67 root - INFO - Initiating data transformation process.
+[2025-06-03 22:49:34,658] 69 root - INFO - Starting data transformation process.
+[2025-06-03 22:49:34,687] 50 root - INFO - Entered get_data_transformer_object method of DataTransformation class
+[2025-06-03 22:49:34,688] 53 root - INFO - KNNImputer created with parameters: {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[2025-06-03 22:49:34,708] 68 root - INFO - Entered the save_object method of main utils class
+[2025-06-03 22:49:34,720] 72 root - INFO - Exited the save_object method of main utils class
+[2025-06-03 22:49:34,720] 68 root - INFO - Entered the save_object method of main utils class
+[2025-06-03 22:49:34,724] 72 root - INFO - Exited the save_object method of main utils class
+[2025-06-03 22:49:34,728] 68 root - INFO - Entered the save_object method of main utils class
+[2025-06-03 22:49:34,731] 72 root - INFO - Exited the save_object method of main utils class
+[2025-06-03 22:49:34,731] 115 root - INFO - Data transformation completed successfully.
+[2025-06-03 22:49:34,732] 37 root - INFO - Data Transformation completed with artifact: DataTransformationArtifact(transformed_train_file_path='Artifacts\\06_03_2025_22_49_31\\data_transformation\\transformed\\train.npy', transformed_test_file_path='Artifacts\\06_03_2025_22_49_31\\data_transformation\\transformed\\test.npy', transformed_object_file_path='Artifacts\\06_03_2025_22_49_31\\data_transformation\\transformed_object\\preprocessing.pkl')
+[2025-06-03 22:49:34,733] 40 root - INFO - Model training artifact creation started
+[2025-06-03 22:53:47,101] 87 root - INFO - Entered the load_object method of main utils class
+[2025-06-03 22:53:47,115] 90 root - INFO - Exited the load_object method of main utils class
+[2025-06-03 22:53:47,115] 68 root - INFO - Entered the save_object method of main utils class
+[2025-06-03 22:53:47,153] 72 root - INFO - Exited the save_object method of main utils class
+[2025-06-03 22:53:47,153] 68 root - INFO - Entered the save_object method of main utils class
+[2025-06-03 22:53:47,189] 72 root - INFO - Exited the save_object method of main utils class
+[2025-06-03 22:53:47,189] 128 root - INFO - model trainer artifact: ModelTrainerArtifact(trained_model_file_path='Artifacts\\06_03_2025_22_49_31\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9921724102876893, precision_score=0.9906617945594803, recall_score=0.993687639991855), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9716113554578168, precision_score=0.9681274900398407, recall_score=0.9751203852327448))
+[2025-06-03 22:53:47,191] 44 root - INFO - Model training completed with artifact: ModelTrainerArtifact(trained_model_file_path='Artifacts\\06_03_2025_22_49_31\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=0.9921724102876893, precision_score=0.9906617945594803, recall_score=0.993687639991855), test_metric_artifact=ClassificationMetricArtifact(f1_score=0.9716113554578168, precision_score=0.9681274900398407, recall_score=0.9751203852327448))

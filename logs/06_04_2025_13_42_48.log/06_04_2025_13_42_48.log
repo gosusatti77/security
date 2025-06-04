@@ -1,0 +1,14 @@
+[2025-06-04 13:42:55,202] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-04 13:42:55,210] 107 dagshub - INFO - Accessing as gosusatti77
+[2025-06-04 13:42:55,631] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/gosusatti77/security "HTTP/1.1 200 OK"
+[2025-06-04 13:42:56,036] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-04 13:42:56,038] 107 dagshub - INFO - Initialized MLflow to track repo "gosusatti77/security"
+[2025-06-04 13:42:56,039] 107 dagshub - INFO - Repository gosusatti77/security initialized!
+[2025-06-04 13:44:59,245] 87 root - INFO - Entered the load_object method of main utils class
+[2025-06-04 13:44:59,269] 90 root - INFO - Exited the load_object method of main utils class
+[2025-06-04 13:44:59,269] 87 root - INFO - Entered the load_object method of main utils class
+[2025-06-04 13:44:59,290] 90 root - INFO - Exited the load_object method of main utils class
+[2025-06-04 13:45:04,935] 87 root - INFO - Entered the load_object method of main utils class
+[2025-06-04 13:45:04,937] 90 root - INFO - Exited the load_object method of main utils class
+[2025-06-04 13:45:04,937] 87 root - INFO - Entered the load_object method of main utils class
+[2025-06-04 13:45:04,939] 90 root - INFO - Exited the load_object method of main utils class

@@ -1,0 +1,6 @@
+[2025-06-04 12:57:26,659] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-04 12:57:26,678] 107 dagshub - INFO - Accessing as gosusatti77
+[2025-06-04 12:57:27,086] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/repos/gosusatti77/security "HTTP/1.1 200 OK"
+[2025-06-04 12:57:27,477] 1025 httpx - INFO - HTTP Request: GET https://dagshub.com/api/v1/user "HTTP/1.1 200 OK"
+[2025-06-04 12:57:27,482] 107 dagshub - INFO - Initialized MLflow to track repo "gosusatti77/security"
+[2025-06-04 12:57:27,483] 107 dagshub - INFO - Repository gosusatti77/security initialized!

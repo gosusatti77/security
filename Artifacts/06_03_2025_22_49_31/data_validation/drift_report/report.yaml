@@ -1,0 +1,93 @@
+Abnormal_URL:
+  is_found: false
+  p_value: 0.9996208033369954
+DNSRecord:
+  is_found: false
+  p_value: 1.0
+Domain_registeration_length:
+  is_found: false
+  p_value: 0.9491766928826618
+Favicon:
+  is_found: false
+  p_value: 0.9086653866244705
+Google_Index:
+  is_found: false
+  p_value: 1.0
+HTTPS_token:
+  is_found: false
+  p_value: 1.0
+Iframe:
+  is_found: false
+  p_value: 0.9978960688614555
+Links_in_tags:
+  is_found: false
+  p_value: 1.0
+Links_pointing_to_page:
+  is_found: false
+  p_value: 0.9970105474352128
+Page_Rank:
+  is_found: false
+  p_value: 1.0
+Prefix_Suffix:
+  is_found: false
+  p_value: 0.9999971010402764
+Redirect:
+  is_found: false
+  p_value: 1.0
+Request_URL:
+  is_found: false
+  p_value: 1.0
+Result:
+  is_found: false
+  p_value: 0.9997064605886263
+RightClick:
+  is_found: false
+  p_value: 1.0
+SFH:
+  is_found: false
+  p_value: 0.8979221700912247
+SSLfinal_State:
+  is_found: false
+  p_value: 0.9786058095826133
+Shortining_Service:
+  is_found: false
+  p_value: 1.0
+Statistical_report:
+  is_found: false
+  p_value: 0.8359863289917472
+Submitting_to_email:
+  is_found: false
+  p_value: 0.7710771491561995
+URL_Length:
+  is_found: false
+  p_value: 0.9999971010402764
+URL_of_Anchor:
+  is_found: false
+  p_value: 0.971456534142284
+age_of_domain:
+  is_found: false
+  p_value: 0.9999836499887566
+double_slash_redirecting:
+  is_found: false
+  p_value: 0.9999999977781104
+having_At_Symbol:
+  is_found: false
+  p_value: 0.9964705532516113
+having_IP_Address:
+  is_found: false
+  p_value: 1.0
+having_Sub_Domain:
+  is_found: false
+  p_value: 0.5267304130409213
+on_mouseover:
+  is_found: false
+  p_value: 0.6049845433946239
+popUpWidnow:
+  is_found: false
+  p_value: 0.995166717604938
+port:
+  is_found: false
+  p_value: 0.7860683696901033
+web_traffic:
+  is_found: false
+  p_value: 0.9453319119697715
