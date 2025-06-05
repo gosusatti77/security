@@ -51,7 +51,12 @@ jobs:
 
       - name: Create ECR repository if it doesn’t exist
         run: |
-          bash -c "aws ecr describe-repositories --repository-names ${{ secrets.ECR_REPOSITORY_NAME }} || aws ecr create-repository --repository-name ${{ secrets.ECR_REPOSITORY_NAME }}"
+          if ! aws ecr describe-repositories --repository-names ${{ secrets.ECR_REPOSITORY_NAME }}; then
+            echo "🔨 Repository not found. Creating it..."
+            aws ecr create-repository --repository-name ${{ secrets.ECR_REPOSITORY_NAME }}
+          else
+            echo "✅ Repository already exists"
+          fi
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
