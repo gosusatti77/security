@@ -54,10 +54,12 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
           IMAGE_TAG: latest
         run: |
+          # Remove potential newlines/spaces
+          ECR_REGISTRY=$(echo $ECR_REGISTRY | tr -d '[:space:]')
+          ECR_REPOSITORY=$(echo $ECR_REPOSITORY | tr -d '[:space:]')        
           echo "🔧 Building Docker image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
           docker buildx build --load -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           echo "🚀 Pushing Docker image to ECR..."
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "✅ Docker image pushed successfully!"
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-          
