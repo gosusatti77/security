@@ -49,6 +49,12 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Debug workspace
+        run: |
+          echo "✅ Current workspace files:"
+          ls -la
+
+
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
