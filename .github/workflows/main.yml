@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 
 
       - name: Lint code
         run: echo "Linting repository"
@@ -49,14 +49,6 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Create ECR repository if it doesn’t exist
-        run: |
-          if ! aws ecr describe-repositories --repository-names ${{ secrets.ECR_REPOSITORY_NAME }}; then
-            echo "🔨 Repository not found. Creating it..."
-            aws ecr create-repository --repository-name ${{ secrets.ECR_REPOSITORY_NAME }}
-          else
-            echo "✅ Repository already exists"
-          fi
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
@@ -65,13 +57,11 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
           IMAGE_TAG: latest
         run: |
-          echo "🔧 Building Docker image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "✅ Image pushed to ECR: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
+          # Build a docker container and
+          # push it to ECR so that it can
+          
   Continuous-Deployment:
-    name: Continuous Deployment
+    
     needs: build-and-push-ecr-image
     runs-on: self-hosted
     steps:
@@ -89,30 +79,18 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
-      - name: Pull latest image
+      
+      - name: Pull latest images
         run: |
-          echo "🔄 Pulling latest image: ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest"
-          docker pull ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
-
-      - name: Stop and remove existing container if running
+         docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         
+      #- name: Stop and remove  container if running
+       # run: |
+        # docker ps -q --filter "name=networksecurity" | grep -q . && docker stop networksecurity && docker rm -fv networksecurity
+       
+      - name: Run Docker Image to serve users
         run: |
-          if [ $(docker ps -q --filter "name=networksecurity") ]; then
-            echo "🛑 Stopping and removing existing container"
-            docker stop networksecurity && docker rm -fv networksecurity
-          else
-            echo "✅ No existing container to stop"
-          fi
-
-      - name: Run Docker container
+         docker run -d -p 8080:8080 --ipc="host" --name=networksecurity -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+      - name: Clean previous images and containers
         run: |
-          echo "🚀 Starting container from image"
-          docker run -d -p 8080:8080 --ipc="host" --name=networksecurity \
-            -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' \
-            -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
-            -e 'AWS_REGION=${{ secrets.AWS_REGION }}' \
-            ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
-
-      - name: Clean up unused resources
-        run: |
-          echo "🧹 Cleaning up unused Docker resources"
-          docker system prune -f
+         docker system prune -f
